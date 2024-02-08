@@ -1,0 +1,122 @@
+---
+title: "Lab Exercise 1"
+author: "Alfe Kevin P. Gallo"
+date: "2024-02-08"
+output: pdf_document
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+library(xml2)
+product = data.frame()
+
+url<-"https://www.amazon.co.uk/s?k=mechanical+keyboard&crid=2QCZZ8FGPVY98&sprefix=mec%2Caps%2C286&ref=nb_sb_ss_ts-doa-p_1_3"
+
+url2<-"https://www.amazon.co.uk/s?k=mechanical+keyboard&page=2&crid=2QCZZ8FGPVY98&qid=1707353711&sprefix=mec%2Caps%2C286&ref=sr_pg_2"
+
+url3<-"https://www.amazon.co.uk/s?k=mechanical+keyboard&page=3&crid=2QCZZ8FGPVY98&qid=1707356328&sprefix=mec%2Caps%2C286&ref=sr_pg_3"
+```
+  
+```{r}
+session<-bow(url,user_agent ="For Educational purposes only")
+session
+
+scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+}
+
+productName <- scrapeNodes("span.a-size-medium.a-color-base.a-text-normal")
+productName <- productName[1:12]
+
+productPrice <- scrapeNodes("span.a-price")
+productPrice <-productPrice[1:12]
+
+productRatings <- scrapeNodes("i.a-icon.a-icon-star-small.a-star-small-4-5.aok-align-bottom")
+productRatings <-productRatings[1:12]
+
+productTNRV <- scrapeNodes("span.a-size-base.s-underline-text")
+productTNRV <- productTNRV[1:12]
+
+  product <- rbind(product, data.frame(Product_Name = productName,
+                      Price = productPrice,
+                      Ratings = productRatings,
+                      Total_Number_of_Reviews = productTNRV))
+ 
+```
+
+```{r}
+product2 = data.frame()
+
+session2<-bow(url2,user_agent ="For Educational purposes only")
+session2
+
+scrapeNodes <- function(selector){
+    scrape(session2) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+}
+
+productName2 <- scrapeNodes("h2.a-size-mini.a-spacing-none.a-color-base.s-line-clamp-2")
+productName2 <- productName2[1:12]
+
+productPrice2 <- scrapeNodes("span.a-price")
+productPrice2 <-productPrice2[1:12]
+
+productRatings2 <- scrapeNodes("i.a-icon.a-icon-star-small.a-star-small-4-5.aok-align-bottom")
+productRatings2 <-productRatings2[1:12]
+
+productTNRV2 <- scrapeNodes("span.a-size-base.s-underline-text")
+productTNRV2 <- productTNRV2[1:12]
+
+  product2 <- rbind(product2, data.frame(Product_Name = productName2,
+                      Price = productPrice2,
+                      Ratings = productRatings2,
+                      Total_Number_of_Reviews = productTNRV2))
+
+
+
+```
+
+```{r}
+product3 = data.frame()
+
+session3<-bow(url3,user_agent ="For Educational purposes only")
+session3
+
+scrapeNodes <- function(selector){
+    scrape(session3) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+}
+
+productName3 <- scrapeNodes("h2.a-size-mini.a-spacing-none.a-color-base.s-line-clamp-2")
+productName3 <- productName3[1:12]
+
+productPrice3 <- scrapeNodes("span.a-price")
+productPrice3 <-productPrice3[1:12]
+
+productRatings3 <- scrapeNodes("i.a-icon.a-icon-star-small.a-star-small-4-5.aok-align-bottom")
+productRatings3 <-productRatings3[1:12]
+
+productTNRV3 <- scrapeNodes("span.a-size-base.s-underline-text")
+productTNRV3 <- productTNRV3[1:12]
+
+  product3 <- rbind(product3, data.frame(Product_Name = productName3,
+                      Price = productPrice3,
+                      Ratings = productRatings3,
+                      Total_Number_of_Reviews = productTNRV3))
+
+
+
+
+```
+
