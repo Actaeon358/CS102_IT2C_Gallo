@@ -15,16 +15,22 @@ library(polite)
 library(httr)
 library(selectr)
 library(xml2)
+
+## 1st product tshirt
+
+
 product = data.frame()
 
-url<-"https://www.amazon.co.uk/s?k=mechanical+keyboard&crid=2QCZZ8FGPVY98&sprefix=mec%2Caps%2C286&ref=nb_sb_ss_ts-doa-p_1_3"
+url<-"https://www.amazon.com.be/s?k=tshirt+men&crid=2GH9JI5MZELHZ&sprefix=tshi%2Caps%2C277&ref=nb_sb_ss_ts-doa-p_1_4"
 
-url2<-"https://www.amazon.co.uk/s?k=mechanical+keyboard&page=2&crid=2QCZZ8FGPVY98&qid=1707353711&sprefix=mec%2Caps%2C286&ref=sr_pg_2"
+url2<-"https://www.amazon.com.be/-/en/s?k=tshirt+men&page=2&crid=2GH9JI5MZELHZ&qid=1707956978&sprefix=tshi%2Caps%2C277&ref=sr_pg_2"
 
-url3<-"https://www.amazon.co.uk/s?k=mechanical+keyboard&page=3&crid=2QCZZ8FGPVY98&qid=1707356328&sprefix=mec%2Caps%2C286&ref=sr_pg_3"
+
 ```
   
 ```{r}
+#url 1
+
 session<-bow(url,user_agent ="For Educational purposes only")
 session
 
@@ -34,17 +40,17 @@ scrapeNodes <- function(selector){
       html_text(trim = TRUE)
 }
 
-productName <- scrapeNodes("span.a-size-medium.a-color-base.a-text-normal")
-productName <- productName[1:12]
+productName <- scrapeNodes("h2.a-size-mini.a-spacing-none.a-color-base.s-line-clamp-2")
+productName <- productName[1:31]
 
 productPrice <- scrapeNodes("span.a-price")
-productPrice <-productPrice[1:12]
+productPrice <-productPrice[1:31]
 
 productRatings <- scrapeNodes("i.a-icon.a-icon-star-small.a-star-small-4-5.aok-align-bottom")
-productRatings <-productRatings[1:12]
+productRatings <-productRatings[1:31]
 
 productTNRV <- scrapeNodes("span.a-size-base.s-underline-text")
-productTNRV <- productTNRV[1:12]
+productTNRV <- productTNRV[1:31]
 
   product <- rbind(product, data.frame(Product_Name = productName,
                       Price = productPrice,
@@ -54,6 +60,8 @@ productTNRV <- productTNRV[1:12]
 ```
 
 ```{r}
+#url 2
+
 product2 = data.frame()
 
 session2<-bow(url2,user_agent ="For Educational purposes only")
@@ -66,16 +74,16 @@ scrapeNodes <- function(selector){
 }
 
 productName2 <- scrapeNodes("h2.a-size-mini.a-spacing-none.a-color-base.s-line-clamp-2")
-productName2 <- productName2[1:12]
+productName2 <- productName2[1:26]
 
 productPrice2 <- scrapeNodes("span.a-price")
-productPrice2 <-productPrice2[1:12]
+productPrice2 <-productPrice2[1:26]
 
 productRatings2 <- scrapeNodes("i.a-icon.a-icon-star-small.a-star-small-4-5.aok-align-bottom")
-productRatings2 <-productRatings2[1:12]
+productRatings2 <-productRatings2[1:26]
 
 productTNRV2 <- scrapeNodes("span.a-size-base.s-underline-text")
-productTNRV2 <- productTNRV2[1:12]
+productTNRV2 <- productTNRV2[1:26]
 
   product2 <- rbind(product2, data.frame(Product_Name = productName2,
                       Price = productPrice2,
@@ -87,6 +95,10 @@ productTNRV2 <- productTNRV2[1:12]
 ```
 
 ```{r}
+#url 3 
+
+url3<-"https://www.amazon.com.be/-/en/s?k=tshirt+men&page=3&crid=2GH9JI5MZELHZ&qid=1707957314&sprefix=tshi%2Caps%2C277&ref=sr_pg_3"
+
 product3 = data.frame()
 
 session3<-bow(url3,user_agent ="For Educational purposes only")
@@ -99,16 +111,16 @@ scrapeNodes <- function(selector){
 }
 
 productName3 <- scrapeNodes("h2.a-size-mini.a-spacing-none.a-color-base.s-line-clamp-2")
-productName3 <- productName3[1:12]
+productName3 <- productName3[1:18]
 
 productPrice3 <- scrapeNodes("span.a-price")
-productPrice3 <-productPrice3[1:12]
+productPrice3 <-productPrice3[1:18]
 
 productRatings3 <- scrapeNodes("i.a-icon.a-icon-star-small.a-star-small-4-5.aok-align-bottom")
-productRatings3 <-productRatings3[1:12]
+productRatings3 <-productRatings3[1:18]
 
 productTNRV3 <- scrapeNodes("span.a-size-base.s-underline-text")
-productTNRV3 <- productTNRV3[1:12]
+productTNRV3 <- productTNRV3[1:18]
 
   product3 <- rbind(product3, data.frame(Product_Name = productName3,
                       Price = productPrice3,
@@ -117,6 +129,662 @@ productTNRV3 <- productTNRV3[1:12]
 
 
 
+
+```
+```{r}
+#url 4 
+
+url4<-"https://www.amazon.com.be/-/en/s?k=tshirt+men&page=4&crid=1GGHABKSR7J7M&qid=1707963509&sprefix=%2Caps%2C318&ref=sr_pg_4"
+
+product4 = data.frame()
+
+session4<-bow(url4,user_agent ="For Educational purposes only")
+session4
+
+scrapeNodes <- function(selector){
+    scrape(session4) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+}
+
+productName4 <- scrapeNodes("h2.a-size-mini.a-spacing-none.a-color-base.s-line-clamp-2")
+productName4 <- productName4[1:15]
+
+productPrice4 <- scrapeNodes("span.a-price")
+productPrice4 <-productPrice4[1:15]
+
+productRatings4 <- scrapeNodes("i.a-icon.a-icon-star-small.a-star-small-4-5.aok-align-bottom")
+productRatings4 <-productRatings4[1:15]
+
+productTNRV4 <- scrapeNodes("span.a-size-base.s-underline-text")
+productTNRV4 <- productTNRV4[1:15]
+
+  product4 <- rbind(product4, data.frame(Product_Name = productName4,
+                      Price = productPrice4,
+                      Ratings = productRatings4,
+                      Total_Number_of_Reviews = productTNRV4))
+
+
+
+```
+
+```{r}
+#url 5 
+
+url5<-"https://www.amazon.com.be/-/en/s?k=tshirt+men&page=6&crid=1GGHABKSR7J7M&qid=1707964011&sprefix=%2Caps%2C318&ref=sr_pg_6"
+
+product6 = data.frame()
+
+session6<-bow(url5,user_agent ="For Educational purposes only")
+session6
+
+scrapeNodes <- function(selector){
+    scrape(session6) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+}
+
+productName6 <- scrapeNodes("h2.a-size-mini.a-spacing-none.a-color-base.s-line-clamp-2")
+productName6 <- productName6[1:10]
+
+productPrice6 <- scrapeNodes("span.a-price")
+productPrice6 <-productPrice6[1:10]
+
+productRatings6 <- scrapeNodes("i.a-icon.a-icon-star-small.a-star-small-4-5.aok-align-bottom")
+productRatings6 <-productRatings6[1:10]
+
+productTNRV6 <- scrapeNodes("span.a-size-base.s-underline-text")
+productTNRV6 <- productTNRV6[1:10]
+
+  product6 <- rbind(product6, data.frame(Product_Name = productName6,
+                      Price = productPrice6,
+                      Ratings = productRatings6,
+                      Total_Number_of_Reviews = productTNRV6))
+
+
+
+  
+  finalproducts <-rbind(product, product2, product3, product4, product5, product6)
+  finalproducts
+```
+
+
+#2nd Product Phones
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+library(xml2)
+
+#link 1
+urlp<-"https://www.amazon.com.be/s?k=phones&crid=2TJEA216QCAPX&sprefix=phon%2Caps%2C435&ref=nb_sb_noss_1"
+
+productp = data.frame()
+
+sessionp<-bow(urlp,user_agent ="For Educational purposes only")
+sessionp
+
+scrapeNodes <- function(selector){
+    scrape(sessionp) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+}
+
+productNamep <- scrapeNodes("h2.a-size-mini.a-spacing-none.a-color-base.s-line-clamp-4")
+productNamep <- productNamep[1:25]
+
+productPricep <- scrapeNodes("span.a-price")
+productPricep <-productPricep[1:25]
+
+productRatingp <- scrapeNodes("i.a-icon.a-icon-star-small.a-star-small-4-5.aok-align-bottom")
+productRatingp <-productRatingp[1:25]
+
+productTNRVp <- scrapeNodes("span.a-size-base.s-underline-text")
+productTNRVp <- productTNRV4[1:25]
+
+  productp <- rbind(productp, data.frame(Product_Name = productNamep,
+                      Price = productPricep,
+                      Ratings = productRatingp,
+                      Total_Number_of_Reviews = productTNRVp))
+  
+  
+  
+
+#link 2
+  
+urlp2<-"https://www.amazon.com.be/-/en/s?k=phones&page=2&crid=2TJEA216QCAPX&qid=1708165997&sprefix=phon%2Caps%2C435&ref=sr_pg_2"
+
+productp2 = data.frame()
+
+sessionp2<-bow(urlp2,user_agent ="For Educational purposes only")
+sessionp2
+
+scrapeNodes <- function(selector){
+    scrape(sessionp2) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+}
+
+productNamep2 <- scrapeNodes("h2.a-size-mini.a-spacing-none.a-color-base.s-line-clamp-4")
+productNamep2 <- productNamep2[1:27]
+
+productPricep2 <- scrapeNodes("span.a-price")
+productPricep2 <-productPricep2[1:27]
+
+productRatingp2 <- scrapeNodes("i.a-icon.a-icon-star-small.a-star-small-4-5.aok-align-bottom")
+productRatingp2 <-productRatingp2[1:27]
+
+productTNRVp2 <- scrapeNodes("span.a-size-base.s-underline-text")
+productTNRVp2 <- productTNRVp2[1:27]
+
+  productp2 <- rbind(productp2, data.frame(Product_Name = productNamep2,
+                      Price = productPricep2,
+                      Ratings = productRatingp2,
+                      Total_Number_of_Reviews = productTNRVp2))
+  
+
+#link 3
+  
+urlp3<-"https://www.amazon.com.be/-/en/s?k=phones&page=3&crid=2TJEA216QCAPX&qid=1708167598&sprefix=phon%2Caps%2C435&ref=sr_pg_3"
+
+productp3 = data.frame()
+
+sessionp3<-bow(urlp3,user_agent ="For Educational purposes only")
+sessionp3
+
+scrapeNodes <- function(selector){
+    scrape(sessionp3) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+}
+
+productNamep3 <- scrapeNodes("h2.a-size-mini.a-spacing-none.a-color-base.s-line-clamp-4")
+productNamep3 <- productNamep3[1:58]
+
+productPricep3 <- scrapeNodes("span.a-price")
+productPricep3 <-productPricep3[1:58]
+
+productRatingp3 <- scrapeNodes("i.a-icon.a-icon-star-small.a-star-small-4-5.aok-align-bottom")
+productRatingp3 <-productRatingp3[1:58]
+
+productTNRVp3 <- scrapeNodes("span.a-size-base.s-underline-text")
+productTNRVp3 <- productTNRVp3[1:58]
+
+  productp3 <- rbind(productp3, data.frame(Product_Name = productNamep3,
+                      Price = productPricep3,
+                      Ratings = productRatingp3,
+                      Total_Number_of_Reviews = productTNRVp3))
+  
+  
+   finalproducts2 <-rbind(productp, productp2, productp3)
+  finalproducts2
+  
+```
+
+
+10 reviews per  10 movies 
+
+```{r}
+#movie 1
+url01 <- "https://www.imdb.com/title/tt15314262/reviews?ref_=tt_urv"
+
+
+session01<-bow(url01,user_agent ="For Educational purposes only")
+session01
+
+scrapeNodes <- function(selector){
+    scrape(session01) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+}
+
+movie_category <- rep("Movie",10)
+
+movie_name <- scrapeNodes("a.subnav_heading")
+movie_name <- rep(movie_name,10)
+movie_name <- movie_name[1:10]
+
+  movie_reviewer <- scrapeNodes("span.display-name-link")
+  movie_reviewer <- movie_reviewer[1:10]
+  
+  movie_review <- scrapeNodes("div.text.show-more__control")
+  movie_review <- movie_review[1:10]
+  
+  movie_date <- scrapeNodes("span.review-date")
+  movie_date <- movie_date[1:10]
+  
+  movie_rating <- scrapeNodes("span.rating-other-user-rating")
+  movie_rating <- movie_rating[1:10]
+  
+  moviereviews1= data.frame()
+  moviereviews1 <- rbind(moviereviews1, data.frame(
+                      category = movie_category,
+                      name = movie_name,
+                      reviewer = movie_reviewer,
+                      reviews = movie_review,
+                      "date of review" =movie_date,
+                      ratings =  movie_rating))
+  
+  Sys.sleep(5)
+```
+
+```{r}
+#movie 2
+
+url02 <- "https://www.imdb.com/title/tt6166392/reviews?ref_=tt_urv"
+
+
+session<-bow(url02,user_agent ="For Educational purposes only")
+session
+
+scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+}
+
+movie_category <- rep("Movie",10)
+
+movie_name2 <- scrapeNodes("a.subnav_heading")
+movie_name2 <- rep(movie_name2,10)
+movie_name2 <- movie_name2[1:10]
+
+  movie_reviewer2 <- scrapeNodes("span.display-name-link")
+  movie_reviewer2 <- movie_reviewer2[1:10]
+  
+  movie_review2 <- scrapeNodes("div.text.show-more__control")
+  movie_review2 <- movie_review2[1:10]
+  
+  movie_date2 <- scrapeNodes("span.review-date")
+  movie_date2 <- movie_date2[1:10]
+  
+  movie_rating2 <- scrapeNodes("span.rating-other-user-rating")
+  movie_rating2 <- movie_rating2[1:10]
+  
+  moviereviews2= data.frame()
+  moviereviews2 <- rbind(moviereviews2, data.frame(
+                      category = movie_category,
+                      name = movie_name2,
+                      reviewer = movie_reviewer2,
+                      reviews = movie_review2,
+                      "date of review" =movie_date2,
+                      ratings =  movie_rating2))
+  
+  Sys.sleep(5)
+
+```
+
+```{r}
+
+#movie 3
+
+url03 <- "https://www.imdb.com/title/tt11762114/reviews?ref_=tt_urv"
+
+
+session<-bow(url03,user_agent ="For Educational purposes only")
+session
+
+scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+}
+
+movie_category <- rep("Movie",10)
+
+movie_name3 <- scrapeNodes("a.subnav_heading")
+movie_name3 <- rep(movie_name3,10)
+movie_name3 <- movie_name3[1:10]
+
+  movie_reviewer3 <- scrapeNodes("span.display-name-link")
+  movie_reviewer3 <- movie_reviewer3[1:10]
+  
+  movie_review3 <- scrapeNodes("div.text.show-more__control")
+  movie_review3 <- movie_review3[1:10]
+  
+  movie_date3 <- scrapeNodes("span.review-date")
+  movie_date3 <- movie_date3[1:10]
+  
+  movie_rating3 <- scrapeNodes("span.rating-other-user-rating")
+  movie_rating3 <- movie_rating3[1:10]
+  
+  moviereviews3= data.frame()
+  moviereviews3 <- rbind(moviereviews3, data.frame(
+                      category = movie_category,
+                      name = movie_name3,
+                      reviewer = movie_reviewer3,
+                      reviews = movie_review3,
+                      "date of review" =movie_date3,
+                      ratings =  movie_rating3))
+  
+  Sys.sleep(5)
+
+
+```
+
+```{r}
+
+
+#movie 4
+
+url04 <- "https://www.imdb.com/title/tt6495056/reviews?ref_=tt_urv"
+
+
+session<-bow(url04,user_agent ="For Educational purposes only")
+session
+
+scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+}
+
+movie_category <- rep("Movie",10)
+
+movie_name4 <- scrapeNodes("a.subnav_heading")
+movie_name4 <- rep(movie_name4,10)
+movie_name4 <- movie_name4[1:10]
+
+  movie_reviewer4 <- scrapeNodes("span.display-name-link")
+  movie_reviewer4 <- movie_reviewer4[1:10]
+  
+  movie_review4 <- scrapeNodes("div.text.show-more__control")
+  movie_review4 <- movie_review4[1:10]
+  
+  movie_date4 <- scrapeNodes("span.review-date")
+  movie_date4 <- movie_date4[1:10]
+  
+  movie_rating4 <- scrapeNodes("span.rating-other-user-rating")
+  movie_rating4 <- movie_rating4[1:10]
+  
+  moviereviews4= data.frame()
+  moviereviews4 <- rbind(moviereviews4, data.frame(
+                      category = movie_category,
+                      name = movie_name4,
+                      reviewer = movie_reviewer4,
+                      reviews = movie_review4,
+                      "date of review" =movie_date4,
+                      ratings =  movie_rating4))
+  
+  Sys.sleep(5)
+
+
+
+
+```
+
+```{r}
+
+#movie 5
+
+url05 <- "https://www.imdb.com/title/tt21188080/reviews?ref_=tt_urv"
+
+
+session<-bow(url05,user_agent ="For Educational purposes only")
+session
+
+scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+}
+
+movie_category <- rep("Movie",10)
+
+movie_name5 <- scrapeNodes("a.subnav_heading")
+movie_name5 <- rep(movie_name5,10)
+movie_name5 <- movie_name5[1:10]
+
+  movie_reviewer5 <- scrapeNodes("span.display-name-link")
+  movie_reviewer5 <- movie_reviewer5[1:10]
+  
+  movie_review5 <- scrapeNodes("div.text.show-more__control")
+  movie_review5 <- movie_review5[1:10]
+  
+  movie_date5 <- scrapeNodes("span.review-date")
+  movie_date5 <- movie_date5[1:10]
+  
+  movie_rating5 <- scrapeNodes("span.rating-other-user-rating")
+  movie_rating5 <- movie_rating5[1:10]
+  
+  moviereviews5= data.frame()
+  moviereviews5 <- rbind(moviereviews5, data.frame(
+                      category = movie_category,
+                      name = movie_name5,
+                      reviewer = movie_reviewer5,
+                      reviews = movie_review5,
+                      "date of review" =movie_date5,
+                      ratings =  movie_rating5))
+  Sys.sleep(5)
+```
+
+```{r}
+#movie 6
+
+url06 <- "https://www.imdb.com/title/tt15009428/reviews?ref_=tt_urv"
+
+
+session<-bow(url06,user_agent ="For Educational purposes only")
+session
+
+scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+}
+
+movie_category <- rep("Movie",10)
+
+movie_name6 <- scrapeNodes("a.subnav_heading")
+movie_name6 <- rep(movie_name6,10)
+movie_name6 <- movie_name6[1:10]
+
+  movie_reviewer6 <- scrapeNodes("span.display-name-link")
+  movie_reviewer6 <- movie_reviewer6[1:10]
+  
+  movie_review6 <- scrapeNodes("div.text.show-more__control")
+  movie_review6 <- movie_review6[1:10]
+  
+  movie_date6 <- scrapeNodes("span.review-date")
+  movie_date6 <- movie_date6[1:10]
+  
+  movie_rating6 <- scrapeNodes("span.rating-other-user-rating")
+  movie_rating6 <- movie_rating6[1:10]
+  
+  moviereviews6= data.frame()
+  moviereviews6 <- rbind(moviereviews6, data.frame(
+                      category = movie_category,
+                      name = movie_name6,
+                      reviewer = movie_reviewer6,
+                      reviews = movie_review6,
+                      "date of review" =movie_date6,
+                      ratings =  movie_rating6))
+  Sys.sleep(5)
+
+```
+
+```{r}
+
+#movie 7
+
+url07 <- "https://www.imdb.com/title/tt0109830/reviews?ref_=tt_urv"
+
+
+session<-bow(url07,user_agent ="For Educational purposes only")
+session
+
+scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+}
+
+movie_category <- rep("Movie",10)
+
+movie_name7 <- scrapeNodes("a.subnav_heading")
+movie_name7 <- rep(movie_name7,10)
+movie_name7 <- movie_name7[1:10]
+
+  movie_reviewer7 <- scrapeNodes("span.display-name-link")
+  movie_reviewer7 <- movie_reviewer7[1:10]
+  
+  movie_review7 <- scrapeNodes("div.text.show-more__control")
+  movie_review7 <- movie_review7[1:10]
+  
+  movie_date7 <- scrapeNodes("span.review-date")
+  movie_date7 <- movie_date7[1:10]
+  
+  movie_rating7 <- scrapeNodes("span.rating-other-user-rating")
+  movie_rating7 <- movie_rating7[1:10]
+  
+  moviereviews7= data.frame()
+  moviereviews7 <- rbind(moviereviews7, data.frame(
+                      category = movie_category,
+                      name = movie_name7,
+                      reviewer = movie_reviewer7,
+                      reviews = movie_review7,
+                      "date of review" =movie_date7,
+                      ratings =  movie_rating7))
+
+  Sys.sleep(5)
+```
+
+```{r}
+
+#movie 8
+
+url08 <- "https://www.imdb.com/title/tt14230458/reviews?ref_=tt_urv"
+
+
+session<-bow(url08,user_agent ="For Educational purposes only")
+session
+
+scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+}
+
+movie_category <- rep("Movie",10)
+
+movie_name8 <- scrapeNodes("a.subnav_heading")
+movie_name8 <- rep(movie_name8,10)
+movie_name8 <- movie_name8[1:10]
+
+  movie_reviewer8 <- scrapeNodes("span.display-name-link")
+  movie_reviewer8 <- movie_reviewer8[1:10]
+  
+  movie_review8 <- scrapeNodes("div.text.show-more__control")
+  movie_review8 <- movie_review8[1:10]
+  
+  movie_date8 <- scrapeNodes("span.review-date")
+  movie_date8 <- movie_date8[1:10]
+
+  movie_rating8 <- scrapeNodes("span.rating-other-user-rating")
+  movie_rating8 <- movie_rating8[1:10]
+  
+  moviereviews8= data.frame()
+  moviereviews8 <- rbind(moviereviews8, data.frame(
+                      category = movie_category,
+                      name = movie_name8,
+                      reviewer = movie_reviewer8,
+                      reviews = movie_review8,
+                      "date of review" =movie_date8,
+                      ratings =  movie_rating8))
+  Sys.sleep(5)
+
+```
+
+```{r}
+#movie 9
+
+url09 <- "https://www.imdb.com/title/tt23561236/reviews?ref_=tt_urv"
+
+
+session<-bow(url09,user_agent ="For Educational purposes only")
+session
+
+scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+}
+
+movie_category <- rep("Movie",10)
+
+movie_name9 <- scrapeNodes("a.subnav_heading")
+movie_name9 <- rep(movie_name9,10)
+movie_name9 <- movie_name9[1:10]
+
+  movie_reviewer9 <- scrapeNodes("span.display-name-link")
+  movie_reviewer9 <- movie_reviewer9[1:10]
+  
+  movie_review9 <- scrapeNodes("div.text.show-more__control")
+  movie_review9 <- movie_review9[1:10]
+  
+  movie_date9 <- scrapeNodes("span.review-date")
+  movie_date9 <- movie_date9[1:10]
+
+  movie_rating9 <- scrapeNodes("span.rating-other-user-rating")
+  movie_rating9 <- movie_rating9[1:10]
+
+  moviereviews9= data.frame()
+  moviereviews9 <- rbind(moviereviews9, data.frame(
+                      category = movie_category,
+                      name = movie_name9,
+                      reviewer = movie_reviewer9,
+                      reviews = movie_review9,
+                      "date of review" =movie_date9,
+                      ratings =  movie_rating9))
+  Sys.sleep(5)
+
+```
+
+```{r}
+
+#movie 10
+
+url10 <- "https://www.imdb.com/title/tt15398776/reviews?ref_=tt_urv"
+
+
+session<-bow(url10,user_agent ="For Educational purposes only")
+session
+
+scrapeNodes <- function(selector){
+    scrape(session) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+}
+
+movie_category <- rep("Movie",10)
+
+movie_name10 <- scrapeNodes("a.subnav_heading")
+movie_name10 <- rep(movie_name10,10)
+movie_name10 <- movie_name10[1:10]
+
+  movie_reviewer10 <- scrapeNodes("span.display-name-link")
+  movie_reviewer10 <- movie_reviewer10[1:10]
+  
+  movie_review10 <- scrapeNodes("div.text.show-more__control")
+  movie_review10 <- movie_review10[1:10]
+  
+  movie_date10 <- scrapeNodes("span.review-date")
+  movie_date10 <- movie_date10[1:10]
+
+  movie_rating10 <- scrapeNodes("span.rating-other-user-rating")
+  movie_rating10 <- movie_rating10[1:10]
+
+  moviereviews10= data.frame()
+  moviereviews10 <- rbind(moviereviews10, data.frame(
+                      category = movie_category,
+                      name = movie_name10,
+                      reviewer = movie_reviewer10,
+                      reviews = movie_review10,
+                      "date of review" =movie_date10,
+                      ratings =  movie_rating10))
+  Sys.sleep(5)
 
 ```
 
