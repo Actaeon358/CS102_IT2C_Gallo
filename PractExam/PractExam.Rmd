@@ -1,0 +1,56 @@
+---
+title: "Practical Exam"
+author: "Alfe Kevin P. Gallo"
+date: "2024-03-06"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+1A. Find out, in a single command, which columns of warpbreaks are either numeric or 
+integer. What are the data types of each column?
+```{r}
+data("warpbreaks")
+#column "breaks" integer data types and both column "wool" and " tension" have character data types
+```
+2A.How many observations does it have?
+```{r}
+
+str(warpbreaks)
+#54 observations
+```
+3A.s numeric a natural data type for the columns which are stored as such? Convert to 
+integer when necessary.
+```{r, error=TRUE}
+integerwarpbreaks <- warpbreaks
+
+integerwarpbreaks <- as.integer(warpbreaks)
+
+integerwarpbreaks <- as.integer(warpbreaks$wool)
+
+integerwarpbreaks <- as.integer(warpbreaks$tension)
+
+
+```
+4A. Error messages in R sometimes report the underlying type of an object rather than the user-level class. Derive from the following code and error message what the underlying type. Explain what is the error all about. Do not just copy the error 
+message that was displayed.
+```{r}
+#there is an error that cannot b forced to become an integer because it is already an integer
+
+```
+1B. Read the complete file using readLines.
+```{r}
+exampleFile <- readLines("/cloud/project/PractExam/exampleFile.txt")
+exampleFile
+
+```
+2B.  Separate the vector of lines into a vector containing comments and a vector containing the data. Hint: use grepl.
+```{r}
+vectorcomment <- exampleFile[grepl("//",exampleFile)]
+vectorcomment
+
+vectordata <-  exampleFile[grepl(";",exampleFile)]
+vectordata
+```
+3B.
