@@ -27,9 +27,9 @@ integerwarpbreaks <- warpbreaks
 
 integerwarpbreaks <- as.integer(warpbreaks)
 
-integerwarpbreaks <- as.integer(warpbreaks$wool)
+#integerwarpbreaks <- as.integer(warpbreaks$wool)
 
-integerwarpbreaks <- as.integer(warpbreaks$tension)
+#integerwarpbreaks <- as.integer(warpbreaks$tension)
 
 
 ```
